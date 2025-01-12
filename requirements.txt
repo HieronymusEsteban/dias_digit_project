@@ -1,0 +1,8 @@
+numpy
+pandas 
+matplotlib
+jupyterlab
+scikit-learn
+pathlib
+ultralytics
+Pillow
