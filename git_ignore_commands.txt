@@ -1,0 +1,23 @@
+# Commands to modify .gitignore from terminal
+
+# Add a single line to .gitignore
+echo "new_pattern_to_ignore" >> .gitignore
+
+# Add specific file extensions
+echo "*.weights" >> .gitignore
+echo "*.pt" >> .gitignore
+
+# Add directories
+echo "dataset/" >> .gitignore
+echo "logs/" >> .gitignore
+
+# Create .gitignore if it doesn't exist and add content
+touch .gitignore
+echo "new_pattern_to_ignore" >> .gitignore
+
+# Add multiple lines at once
+cat << EOF >> .gitignore
+*.weights
+*.pt
+dataset/
+logs/
