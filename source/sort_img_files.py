@@ -5,7 +5,7 @@ import os
 import shutil
 
 
-def sort_img_files(image_dir, model, output_dir_with_person, output_dir_without_person):
+def sort_img_files(image_dir, model, output_dir_with_person, output_dir_without_person, threshold = 0.25):
     # Create empty lists to store the image ids and person detection results:
     img_ids = []
     with_person = []
@@ -23,7 +23,7 @@ def sort_img_files(image_dir, model, output_dir_with_person, output_dir_without_
             img.verify()
 
             # Perform object detection
-            results = model(image_path, verbose=False)
+            results = model(image_path, verbose=False, conf=threshold)
 
             # Check if a person is detected
             has_person = any(int(box[5]) == 0 for box in results[0].boxes.data.tolist())  # Class ID 0 is for 'person'

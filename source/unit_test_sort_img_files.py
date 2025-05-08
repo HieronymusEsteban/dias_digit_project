@@ -21,7 +21,6 @@ os.makedirs(output_dir_without_person, exist_ok=True)
 # Load the YOLOv5 model
 model = YOLO("yolov8n.pt")  # Use yolov8n (nano) for faster inference
 
-
 expected_output = ['111', '058', '025', '035'], [False, True, False, True]
 
 class TestCompleteImageIds(unittest.TestCase):

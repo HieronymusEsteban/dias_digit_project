@@ -1,0 +1,13 @@
+# For a file that has changes but isn't staged yet
+git diff --color HEAD filename
+# For side-by-side diff (easier to read)
+git diff --color HEAD filename --side-by-side
+# First, you need to stage the file to see it in gitk
+git add filename
+# Then run gitk
+gitk filename
+# Configure a visual diff tool (one-time setup)
+git config --global diff.tool vimdiff  # or meld, kdiff3, etc.
+
+# Then use it
+git difftool HEAD filename
