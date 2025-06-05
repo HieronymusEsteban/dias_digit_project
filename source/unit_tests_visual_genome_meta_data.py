@@ -184,12 +184,11 @@ class TestBboxesFromMetaData(unittest.TestCase):
         # Get the directory where your script is located
         script_dir = os.path.dirname(os.path.abspath(__file__))
 
-        self.my_input_objects_path = os.path.join(script_dir, '../..', 'test_visual_genome', 'objects_entire.json')
+        self.my_input_objects_path = os.path.join(script_dir, '../..', 'test_visual_genome', 'objects_first3.json')
         self.my_input_image_path = os.path.join(script_dir, '../..', 'test_visual_genome', 'visual_genome_1.jpg')
         self.my_input_objects = vg_md.read_json_to_dict(self.my_input_objects_path)
         self.my_desired_object = 'man'
         self.my_expected_output_length = 2
-
 
     def test_inputExists(self):
         self.assertIsNotNone(self.my_input_image_path)
@@ -209,7 +208,6 @@ class TestBboxesFromMetaData(unittest.TestCase):
     
     def test_outputLength(self):
         self.assertEqual(len(vg_md.bboxes_from_metadata(self.my_input_image_path, self.my_input_objects, self.my_desired_object)), 2)
-
 
 if __name__ == "__main__":
     unittest.main()
