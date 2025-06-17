@@ -1,5 +1,5 @@
 import unittest
-import image_id_converter as img_id_c
+from . import image_id_converter as img_id_c
 
 img_id_strs = ['111', '1', '32']
 img_id_strs_output = ['id111', 'id001', 'id032']

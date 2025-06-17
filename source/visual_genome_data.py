@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 from PIL import Image
 import numpy as np
-from visual_genome_meta_data import count_occurrences
+from .visual_genome_meta_data import count_occurrences
 
 def convert_url(original_url):
     """

@@ -1,5 +1,5 @@
 import unittest
-import visual_genome_meta_data as vg_md
+from . import visual_genome_meta_data as vg_md
 
 # Importing necessary modules
 import os
