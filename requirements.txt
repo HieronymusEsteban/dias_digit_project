@@ -1,0 +1,17 @@
+numpy
+pandas 
+matplotlib
+jupyterlab
+scikit-learn
+pathlib
+ultralytics
+Pillow
+tf_keras
+tensorflow
+scikit-image
+mediapipe
+mtcnn 
+tensorflow
+lz4
+einops
+ollama
