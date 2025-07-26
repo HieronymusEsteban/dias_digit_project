@@ -1,0 +1,24 @@
+.DS_Store
+.ipynb_checkpoints
+__pycache__
+*.pt
+*.tif
+
+# Model files
+*.pt
+*.onnx
+cdae_model/
+
+# Image files
+*.jpg
+*.jpeg
+*.tif
+*.tiff
+*.png
+
+# Documents
+*.pdf
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
