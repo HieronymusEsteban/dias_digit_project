@@ -22,3 +22,4 @@ cdae_model/
 # Jupyter checkpoints
 .ipynb_checkpoints/
 
+data/
