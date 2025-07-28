@@ -29,3 +29,10 @@ can be used instead of  visual_genome_to_yolo.ipynb: This notebook also offers t
 ### 3. TrainYolo_TryOut.ipynb
 Use the file structure prepared in the previous step, train yolo on visual genome data and test it on the data provided by the institute of Geography. 
 
+## Training autoencoder on visual genome data for clustering:
+### 1. visual_genome_to_pytorch.ipynb: Selects image paths of images with minimum_side_length or bigger, downsize them if necessary, and save images in data_proc_path. Select image_file_paths of images with desired object class based on visual genome meta data and save image_file_paths along with image_ids and class label in a labels.csv file.
+### 2. img_to_pytorch.ipynb: Takes the image_file_paths from labels.csv file, separates the file paths into training and validation set, and loads data into torchvision.dataset format and train convolutional autoencoder.
+
+## Training autoencoder on images from Institute of Geography:
+### img_to_pytorch_for_BernerOberland.ipynb: Converts .tif image files into .jpg image files, loads them into torchvision.dataset format, and trains some autoencoders (basic dense model) to test if the data format works with the training code.
+
