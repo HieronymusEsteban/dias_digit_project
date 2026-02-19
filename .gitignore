@@ -23,3 +23,20 @@ cdae_model/
 .ipynb_checkpoints/
 
 data/
+
+# Database credentials (contains passwords!)
+.env
+
+# Database files to exclude
+# Dumps and backups
+*dump*.sql
+*backup*.sql
+backup/
+
+# Data exports
+data_export*.sql
+exports/
+
+# But allow schema and migration files
+!schema/**/*.sql
+!database/migrations/**/*.sql
