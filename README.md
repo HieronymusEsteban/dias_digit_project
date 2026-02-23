@@ -36,3 +36,116 @@ Use the file structure prepared in the previous step, train yolo on visual genom
 ## Training autoencoder on images from Institute of Geography:
 ### img_to_pytorch_for_BernerOberland.ipynb: Converts .tif image files into .jpg image files, loads them into torchvision.dataset format, and trains some autoencoders (basic dense model) to test if the data format works with the training code.
 
+
+# Database:
+
+## Setup
+
+### 1. Prerequisites
+
+- macOS with Homebrew installed
+- Python 3.9+
+- ~500 MB free disk space
+
+### 2. Install PostgreSQL
+```bash
+# Install PostgreSQL 16
+brew install postgresql@16
+
+# Start PostgreSQL service
+brew services start postgresql@16
+
+# Add PostgreSQL to PATH
+echo 'export PATH="$(brew --prefix postgresql@16)/bin:$PATH"' >> ~/.zshrc
+source ~/.zshrc
+
+# Verify installation
+psql --version
+```
+
+### 3. Clone the repository
+```bash
+git clone https://github.com/HieronymusEsteban/dias_digit_project.git
+cd dias_digit_project
+```
+
+### 4. Set up Python virtual environment
+```bash
+# Create virtual environment
+python3 -m venv dias_huggingface__venv
+
+# Activate it
+source dias_huggingface__venv/bin/activate
+
+# Install dependencies
+pip install -r requirements.txt
+```
+
+### 5. Create database
+```bash
+# Create the database
+createdb image_analysis_dev
+```
+
+### 6. Configure database connection
+```bash
+cd project_clean
+
+# Copy environment template
+cp .env.example .env
+
+# Edit with your credentials (use nano, vim, or VS Code)
+nano .env
+```
+
+Set these values in `.env`:
+```bash
+DB_NAME=image_analysis_dev
+DB_USER=your_mac_username
+DB_HOST=localhost
+DB_PORT=5432
+DB_PASSWORD=            # Leave empty for local Homebrew PostgreSQL
+```
+
+**⚠️ Never commit `.env` to Git - it contains credentials!**
+
+### 7. Install database schema
+```bash
+# Run schema files in order (from project_clean directory)
+psql image_analysis_dev -f schema/create_tables.sql
+psql image_analysis_dev -f schema/create_indexes.sql
+psql image_analysis_dev -f schema/create_views.sql
+psql image_analysis_dev -f schema/schema_migration/alter_analysis_runs_clustering.sql
+```
+
+### 8. Load data via ETL notebooks
+
+Run notebooks in this order:
+```bash
+jupyter lab
+```
+
+**1. Load LLM Classification Data:** `db_etl_llm.ipynb`
+   - Loads giub TIF images
+   - Loads ground truth labels
+   - Loads MiniCPM-V predictions and responses
+
+**2. Load YOLO Detection Data:** `db_etl_yolo.ipynb`
+   - Reuses giub images (if already loaded)
+   - Loads YOLO person detection predictions
+
+**3. Load Clustering Data:** `db_etl_clustering.ipynb`
+   - Loads Visual Genome JPG images
+   - Loads clustering analysis results
+
+### 9. Validate data loading (optional)
+
+Run `validate_etl_data_loading.ipynb` to verify all data loaded correctly.
+
+---
+
+## Additional Resources
+
+- **Detailed setup guide:** See `SETUP_GUIDE.md` for comprehensive installation instructions
+- **Backup & restore:** See `BACKUP_RESTORE_GUIDE.md` for database backup procedures
+- **Database documentation:** See `image_analysis_db_documentation.pdf` for complete schema reference
