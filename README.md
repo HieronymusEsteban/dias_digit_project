@@ -78,7 +78,7 @@ python3 -m venv dias_huggingface__venv
 source dias_huggingface__venv/bin/activate
 
 # Install dependencies
-pip install -r requirements.txt
+pip install -r requirements_huggingface.txt
 ```
 
 ### 5. Create database
