@@ -23,7 +23,7 @@ from dotenv import load_dotenv
 
 # Load environment variables from .env file
 # This reads DB_NAME, DB_USER, DB_PASSWORD, DB_HOST, DB_PORT from your .env file
-load_dotenv()
+# load_dotenv()
 
 
 class MLDataLoader:
