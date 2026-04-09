@@ -9,11 +9,11 @@ SELECT
     i.filename,
     gt.label_name,
     gt.value,
-    gt.changed_at
+    gt.created_at  -- Changed from changed_at
 FROM images i
 LEFT JOIN ground_truth_history gt 
     ON i.image_id = gt.image_id
-WHERE gt.is_current = TRUE OR gt.is_current IS NULL;  -- Current values or no ground truth
+WHERE gt.is_current = TRUE OR gt.is_current IS NULL;
 
 COMMENT ON VIEW ground_truth_labels IS 
     'Current ground truth labels for all images (excludes historical changes)';
@@ -30,7 +30,8 @@ SELECT
     MAX(CASE WHEN gt.label_name = 'person_recognisable' THEN gt.value END) as person_recognisable,
     MAX(CASE WHEN gt.label_name = 'is_photo' THEN gt.value END) as is_photo,
     MAX(CASE WHEN gt.label_name = 'with_church' THEN gt.value END) as with_church,
-    MAX(CASE WHEN gt.label_name = 'in_high_alpine_environment' THEN gt.value END) as in_high_alpine_environment
+    MAX(CASE WHEN gt.label_name = 'in_high_alpine_environment' THEN gt.value END) as in_high_alpine_environment,
+    MAX(CASE WHEN gt.label_name = 'is_map' THEN gt.value END) as is_map
 FROM images i
 LEFT JOIN ground_truth_history gt 
     ON i.image_id = gt.image_id 
