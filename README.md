@@ -15,15 +15,13 @@ Loads a manually created label file and saves a modified version ("labels_mod.cs
 ### 2. filter_out_people_multi_approach.ipynb (or as script: filter_out_people_multi_approach.py):
 Recognises images with people first by using yolo then by using an LLM (MiniCPM-v). 
 The output from the yolo analysis is stored in files (integers at the end of filename identify analysis run):
-
-	- 'people_detect_multi_approach_ml_metrics_yolo_20260309_214342.csv',
- 	- 'people_detect_multi_approach_labels_results_yolo_20260309_214342.csv',
+- 'people_detect_multi_approach_ml_metrics_yolo_20260309_214342.csv',
+- 'people_detect_multi_approach_labels_results_yolo_20260309_214342.csv',
 	- 'times_people_detect_multi_approach_yolo_20260309_214342.pkl',
 	- 'conf_matrix_metrics_pers_recognisable_yolo.pdf',
 	- 'conf_matrix_metrics_pers_yolo.pdf'
 The output from the llm analysis is stored in files (integers at the end of filename identify analysis run):
-
-	- 'people_detect_multi_approach_labels_results_llm_20260309_214410.csv',
+- 'people_detect_multi_approach_labels_results_llm_20260309_214410.csv',
 	- 'people_detect_multi_approach_ml_metrics_llm_20260309_214410.csv',
 	- 'minicpm_v_model_info.txt',
 	- 'responses_llm_people_detect_multi_approach_20260309_214410.pkl',
@@ -39,11 +37,10 @@ db_etl_llm.ipynb reads the results files ('responses_llm_people_detect_multi_app
 ### 1. load_transform_labels.ipynb:  
 Loads a manually created label file and saves a modified version ("labels_mod.csv"). This only needs to be done once after the creation or manual modification of the original label file, after which the modified file is used by the following notebooks.
 ### 2. rec_multi_object_MiniCPM.ipynb (or as script rec_multi_object_MiniCPM.py):
-Classifies images by image type, content of people or other objects, performance is measured by comparing results with labels in a modified label file ("labels_mod.csv"). The output is stored in (integers at the end of filename identify analysis run): 
-
-	-'responses_multi_object_struct_minicpm_20260309_174756.pkl',
+Classifies images by image type, content of people or other objects, performance is measured by comparing results with labels in a modified label file ("labels_mod.csv"). The output is stored in (integers at the end of filename identify analysis run):
+- 'responses_multi_object_struct_minicpm_20260309_174756.pkl',
 	- 'img_closer_insp_multi_object_struct_minicpm_20260309_174756.pkl',
- 	- 'ml_metrics_multi_object_struct_minicpm_20260309_174756.csv',
+	- 'ml_metrics_multi_object_struct_minicpm_20260309_174756.csv',
 	- 'results_multi_object_struct_minicpm_20260309_174756.pkl',
 	- 'times_multi_object_struct_minicpm_20260309_174756.pkl'
 ### 3. db_etl_llm.ipynb:
@@ -55,13 +52,12 @@ Reads the results files ('responses_multi_object_struct_minicpm_20260309_174756.
 ### 1. load_transform_labels.ipynb:  
 Loads a manually created label file and saves a modified version ("labels_mod.csv"). This only needs to be done once after the creation or manual modification of the original label file, after which the modified file is used by the following notebooks.
 ### 2. rec_multi_object_qwen3vl.ipynb (or as script rec_multi_object_qwen3vl.py):
-Classifies images by image type, content of people or other objects, performance is measured by comparing results with labels in a modified label file ("labels_mod.csv"). The output is stored in (integers at the end of filename identify analysis run): 
-
-	-'responses_multi_object_struct_qwen3vl_20260328_185249.pkl',
-	- 'img_closer_insp_multi_object_struct_qwen3vl_20260328_185249.pkl',
- 	- 'ml_metrics_multi_object_struct_qwen3vl_20260328_185249.csv',
-	- 'results_multi_object_struct_qwen3vl_20260328_185249.pkl',
-	- 'times_multi_object_struct_qwen3vl_20260328_185249.pkl'
+Classifies images by image type, content of people or other objects, performance is measured by comparing results with labels in a modified label file ("labels_mod.csv"). The output is stored in (integers at the end of filename identify analysis run):
+- 'responses_multi_object_struct_qwen3vl_20260328_185249.pkl',
+   - 'img_closer_insp_multi_object_struct_qwen3vl_20260328_185249.pkl',
+   - 'ml_metrics_multi_object_struct_qwen3vl_20260328_185249.csv',
+   - 'results_multi_object_struct_qwen3vl_20260328_185249.pkl',
+   - 'times_multi_object_struct_qwen3vl_20260328_185249.pkl'
 ### 3. db_etl_llm.ipynb:
 Reads the results files ('responses_multi_object_struct_qwen3vl_20260328_185249.pkl', 'img_closer_insp_multi_object_struct_qwen3vl_20260328_185249.pkl', 'ml_metrics_multi_object_struct_qwen3vl_20260328_185249.csv', 'results_multi_object_struct_qwen3vl_20260328_185249.pkl', 'times_multi_object_struct_qwen3vl_20260328_185249.pkl') and loads the data into the database.
 ##------------------------------------------------------------------------------------------------------------------------------------------
@@ -126,7 +122,7 @@ CAVE! Require labels_new.csv file with file paths and data source already added 
 Loads labels data from labels_new.csv file, trains an autoencoder on the image files defined in the labels data (training data = validation data), then applies trained autoencoder and clustering procedure to the same data set.
 The output is stored in: 
 combined_data/
-	- 'results_clustering_pipeline_20260325_201946.pkl', 
+- 'results_clustering_pipeline_20260325_201946.pkl', 
 	- 'times_clustering_pipeline_20260325_201946.pkl',
 	- 'train_data_file_paths_20260325_201946.csv', 
 	- 'val_data_file_paths_20260325_201946.csv'
