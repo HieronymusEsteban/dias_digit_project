@@ -17,16 +17,16 @@ Recognises images with people first by using yolo then by using an LLM (MiniCPM-
 The output from the yolo analysis is stored in files (integers at the end of filename identify analysis run):
 - 'people_detect_multi_approach_ml_metrics_yolo_20260309_214342.csv',
 - 'people_detect_multi_approach_labels_results_yolo_20260309_214342.csv',
-	- 'times_people_detect_multi_approach_yolo_20260309_214342.pkl',
-	- 'conf_matrix_metrics_pers_recognisable_yolo.pdf',
-	- 'conf_matrix_metrics_pers_yolo.pdf'
+- 'times_people_detect_multi_approach_yolo_20260309_214342.pkl',
+- 'conf_matrix_metrics_pers_recognisable_yolo.pdf',
+- 'conf_matrix_metrics_pers_yolo.pdf'
 The output from the llm analysis is stored in files (integers at the end of filename identify analysis run):
 - 'people_detect_multi_approach_labels_results_llm_20260309_214410.csv',
-	- 'people_detect_multi_approach_ml_metrics_llm_20260309_214410.csv',
-	- 'minicpm_v_model_info.txt',
-	- 'responses_llm_people_detect_multi_approach_20260309_214410.pkl',
-	- 'results_llm_people_detect_multi_approach_20260309_214410.pkl',
-	- 'times_people_detect_multi_approach_llm_20260309_214410.pkl'
+- 'people_detect_multi_approach_ml_metrics_llm_20260309_214410.csv',
+- 'minicpm_v_model_info.txt',
+- 'responses_llm_people_detect_multi_approach_20260309_214410.pkl',
+- 'results_llm_people_detect_multi_approach_20260309_214410.pkl',
+- 'times_people_detect_multi_approach_llm_20260309_214410.pkl'
 ### 3. Load results into database:
 db_etl_yolo.ipynb reads the results files ('people_detect_multi_approach_labels_results_yolo_20260309_214342.csv',  	'times_people_detect_multi_approach_yolo_20260309_214342.pkl') and loads the data into the database.
 db_etl_llm.ipynb reads the results files ('responses_llm_people_detect_multi_approach_20260309_214410.pkl', 	'results_llm_people_detect_multi_approach_20260309_214410.pkl', 'times_people_detect_multi_approach_llm_20260309_214410.pkl') and 	loads the data into the database.
@@ -39,10 +39,10 @@ Loads a manually created label file and saves a modified version ("labels_mod.cs
 ### 2. rec_multi_object_MiniCPM.ipynb (or as script rec_multi_object_MiniCPM.py):
 Classifies images by image type, content of people or other objects, performance is measured by comparing results with labels in a modified label file ("labels_mod.csv"). The output is stored in (integers at the end of filename identify analysis run):
 - 'responses_multi_object_struct_minicpm_20260309_174756.pkl',
-	- 'img_closer_insp_multi_object_struct_minicpm_20260309_174756.pkl',
-	- 'ml_metrics_multi_object_struct_minicpm_20260309_174756.csv',
-	- 'results_multi_object_struct_minicpm_20260309_174756.pkl',
-	- 'times_multi_object_struct_minicpm_20260309_174756.pkl'
+- 'img_closer_insp_multi_object_struct_minicpm_20260309_174756.pkl',
+- 'ml_metrics_multi_object_struct_minicpm_20260309_174756.csv',
+- 'results_multi_object_struct_minicpm_20260309_174756.pkl',
+- 'times_multi_object_struct_minicpm_20260309_174756.pkl'
 ### 3. db_etl_llm.ipynb:
 Reads the results files ('responses_multi_object_struct_minicpm_20260309_174756.pkl', 'img_closer_insp_multi_object_struct_minicpm_20260309_174756.pkl', 'ml_metrics_multi_object_struct_minicpm_20260309_174756.csv', 'results_multi_object_struct_minicpm_20260309_174756.pkl', 'times_multi_object_struct_minicpm_20260309_174756.pkl') and loads the data into the database.
 ##------------------------------------------------------------------------------------------------------------------------------------------
@@ -54,10 +54,10 @@ Loads a manually created label file and saves a modified version ("labels_mod.cs
 ### 2. rec_multi_object_qwen3vl.ipynb (or as script rec_multi_object_qwen3vl.py):
 Classifies images by image type, content of people or other objects, performance is measured by comparing results with labels in a modified label file ("labels_mod.csv"). The output is stored in (integers at the end of filename identify analysis run):
 - 'responses_multi_object_struct_qwen3vl_20260328_185249.pkl',
-   - 'img_closer_insp_multi_object_struct_qwen3vl_20260328_185249.pkl',
-   - 'ml_metrics_multi_object_struct_qwen3vl_20260328_185249.csv',
-   - 'results_multi_object_struct_qwen3vl_20260328_185249.pkl',
-   - 'times_multi_object_struct_qwen3vl_20260328_185249.pkl'
+- 'img_closer_insp_multi_object_struct_qwen3vl_20260328_185249.pkl',
+- 'ml_metrics_multi_object_struct_qwen3vl_20260328_185249.csv',
+- 'results_multi_object_struct_qwen3vl_20260328_185249.pkl',
+- 'times_multi_object_struct_qwen3vl_20260328_185249.pkl'
 ### 3. db_etl_llm.ipynb:
 Reads the results files ('responses_multi_object_struct_qwen3vl_20260328_185249.pkl', 'img_closer_insp_multi_object_struct_qwen3vl_20260328_185249.pkl', 'ml_metrics_multi_object_struct_qwen3vl_20260328_185249.csv', 'results_multi_object_struct_qwen3vl_20260328_185249.pkl', 'times_multi_object_struct_qwen3vl_20260328_185249.pkl') and loads the data into the database.
 ##------------------------------------------------------------------------------------------------------------------------------------------
