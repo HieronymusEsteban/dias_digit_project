@@ -924,6 +924,76 @@ class MLDataLoader:
             'skipped': skipped_count
         }
 
+    def load_training_validation_splits(self, filepaths, split_type, analysis_run_id):
+        """
+        Load training/validation split assignments into database.
+        
+        Parameters:
+        -----------
+        filepaths : list of str
+            List of image file paths (must match file_path in images table)
+        split_type : str
+            Type of split (e.g., 'train', 'validation')
+        analysis_run_id : int
+            The database ID of the analysis run these splits belong to
+        
+        How it works:
+        -------------
+        1. For each filepath, looks up corresponding image_id in images table
+        2. Inserts (analysis_run_id, image_id, split_type) into training_validation_splits
+        3. Fails hard if any filepath is not found in database
+        
+        Returns:
+        --------
+        dict : {'inserted': int, 'split_type': str}
+        """
+        print(f"📊 Loading {split_type} splits for analysis_run_id={analysis_run_id}...")
+        print(f"   Processing {len(filepaths)} file paths...")
+        
+        inserted_count = 0
+        
+        # SQL to lookup image_id by filepath
+        lookup_query = """
+            SELECT image_id FROM images WHERE file_path = %s
+        """
+        
+        # SQL to insert split assignment
+        insert_query = """
+            INSERT INTO training_validation_splits 
+                (analysis_run_id, image_id, split_type)
+            VALUES (%s, %s, %s)
+        """
+        
+        # Process each filepath
+        for filepath in filepaths:
+            # Look up image_id for this filepath
+            self.cur.execute(lookup_query, (filepath,))
+            result = self.cur.fetchone()
+            
+            # Fail hard if filepath not found in database
+            if result is None:
+                raise ValueError(
+                    f"Filepath not found in images table: {filepath}\n"
+                    f"Cannot proceed. Ensure all images are loaded before loading splits."
+                )
+            
+            # Extract image_id from result
+            image_id = result[0]
+            
+            # Insert split assignment
+            self.cur.execute(insert_query, (analysis_run_id, image_id, split_type))
+            inserted_count += 1
+        
+        # Commit all inserts
+        self.conn.commit()
+        
+        print(f"   ✅ {inserted_count} {split_type} split assignments loaded")
+        
+        return {
+            'inserted': inserted_count,
+            'split_type': split_type
+        }
+
 
 def delete_images(image_ids=None, source=None, filenames=None, conn=None, cur=None):
     """
