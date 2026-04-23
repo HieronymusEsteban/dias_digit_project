@@ -186,3 +186,6 @@ wheel==0.45.1
 widgetsnbextension==4.0.14
 wrapt==1.17.3
 plotly==5.18.0
+easyocr
+sentence-transformers
+langdetect
